@@ -7,31 +7,40 @@
 
   <style>
 
-   .hero {
+  .hero {
   background: radial-gradient(circle at center, #3b0764, #1e1b4b);
-  padding: 150px 20px 100px; 
+  padding: 200px 20px 150px;
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .hero h1 {
-  font-size: 100px;
+  font-size: 110px;
   font-weight: 800;
-  color: #e9d5ff;
-  text-shadow: 0 0 25px rgba(168, 85, 247, 1);
-  margin-bottom: 10px;
+  color: #f5d0fe;
+  text-shadow:
+  0 0 10px #a855f7,
+  0 0 30px #a855f7,
+  0 0 60px #9333ea;
+  margin-bottom: 20px;
   line-height: 1.1;
-  letter-spacing: 12px;
+  letter-spacing: 6px;
 }
 @media (max-width: 600px) {
+  .hero {
+    padding: 120px 20px 80px;
+  }
+
   .hero h1 {
     font-size: 50px;
+    letter-spacing: 2px;
   }
 }
 
 .subtitle {
   color: #c084fc;
-  font-size: 14px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  margin-bottom: 25px;
 }
 
 .subtitle span {
