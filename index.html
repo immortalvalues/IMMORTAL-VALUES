@@ -2,7 +2,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap" rel="stylesheet">
   <title>Immortal Blox Values</title>
 
   <style>
@@ -12,6 +12,9 @@
   font-family: 'Orbitron', sans-serif;
   text-align: center;
 }
+    * {
+  transition: all 0.2s ease;
+}
   .hero {
   background: radial-gradient(circle at center, #3b0764, #1e1b4b);
   padding: 200px 20px 150px;
@@ -20,13 +23,12 @@
 }
 
 .hero h1 {
-  font-size: 110px;
+ font-size: 90px;
   font-weight: 800;
   color: #f5d0fe;
   text-shadow:
   0 0 10px #a855f7,
-  0 0 30px #a855f7,
-  0 0 60px #9333ea;
+  0 0 25px #a855f7;
   margin-bottom: 20px;
   line-height: 1.1;
   letter-spacing: 6px;
@@ -57,6 +59,11 @@
   color: white;
   cursor: pointer;
   font-weight: 600;
+  transition: 0.3s;
+}
+
+.buttons button:hover {
+  background: #9333ea;
 }
 
 .buttons .outline {
@@ -69,24 +76,29 @@ h1 {
 }
 
 h2 {
-  margin-top: 40px;
+  margin-top: 60px;
+  margin-bottom: 10px;
   color: #c084fc;
 }
-   .container {
-  text-align: center;
+  .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 30px 20px;
 }
-    
+  
 .fruit {
   background: linear-gradient(145deg, #1e1b4b, #0f172a);
   border-radius: 15px;
   padding: 15px;
-  width: 200px;
-  margin: 10px;
-  display: inline-block;
-  vertical-align: top;
   text-align: left;
   border: 2px solid #ef4444;
   box-shadow: 0 0 12px #ef4444;
+}
+  .fruit:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #ef4444;
+  transition: 0.3s;
 }
 
 .mythical {
@@ -140,10 +152,20 @@ h2 {
 
 <body>
 
-<h1>Immortal Blox Values</h1>
+<div class="hero">
+  <h1>Immortal Values</h1>
+  <p class="subtitle">
+    Official Value List by <span>@yourname</span>
+  </p>
+
+  <div class="buttons">
+    <button>Browse Values</button>
+    <button class="outline">Skins & Mutations</button>
+  </div>
+</div>
 
 <!-- MYTHICAL -->
-<h2>🔥 Mythical Fruits</h2>
+<h2> 🐉 Mythical Fruits</h2>
   <div class="container">
 
 <div class="fruit mythical">
@@ -327,7 +349,7 @@ h2 {
 </div>
     </div>
 <!-- LEGENDARY -->
-<h2>⚡ Legendary Fruits</h2>
+<h2> ⚡ Legendary Fruits</h2>
   <div class="container">
 
 <div class="fruit legendary">
@@ -463,11 +485,10 @@ h2 {
 </div>
 
 <!-- RARE -->
-<h2>🟢 Rare Fruits</h2>
+<h2> 💫 Rare Fruits</h2>
+<div class="container">
 
-<div class="fruit rare">
-   <div class="container">
-     
+  <div class="fruit rare">
   <h3>Magma</h3>
   <p>Value: 9k</p>
   <p>Demand: 4/10</p>
@@ -596,9 +617,9 @@ h2 {
 
 <!-- COMMON -->
 <h2>⚪ Common Fruits</h2>
-<div class="fruit common">
-   <div class="container">
-  
+<div class="container">
+
+  <div class="fruit common">
   <h3>Spike</h3>
   <p>Value: 2k</p>
   <p>Demand: 1/10</p>
