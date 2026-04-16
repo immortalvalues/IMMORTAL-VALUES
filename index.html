@@ -38,6 +38,12 @@
   <h3>Dragon (Western)</h3>
   <p>Value: 24–25m</p>
   <p>Demand: 9.5/10</p>
+
+  <button onclick="togglePerm('dragonPerm')">Show Perm</button>
+
+  <p id="dragonPerm" style="display:none;">
+    Perm Value: 36m
+  </p>
 </div>
 
 <div class="fruit">
@@ -344,8 +350,6 @@
   <p>Demand: 1/10</p>
 </div>
 
-</body>
-</html>
 
 <!-- LIMITED / SPECIAL -->
 <h2>🌟 Limited / Special</h2>
@@ -378,3 +382,17 @@
   <p>Value: 6m</p>
   <p>Demand: 8/10</p>
 </div>
+
+<script>
+function togglePerm(id) {
+  var x = document.getElementById(id);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+  
+</body>
+</html>
