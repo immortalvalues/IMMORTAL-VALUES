@@ -100,7 +100,7 @@ h2 {
 }
  .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
   padding: 20px;
   max-width: 1200px;
@@ -264,6 +264,29 @@ padding: 12px 22px;
   font-size: 58px;
 }
 
+}
+    .fruit {
+  position: relative;
+  padding-right: 95px;
+}
+
+.fruit-img-box {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 68px;
+  height: 68px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fruit-img-box img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
 }
     
   </style>
@@ -836,6 +859,8 @@ padding: 12px 22px;
 <p id="rocketPerm" style="display:none;">
   Perm Value: 100k
 </p>
+<div class="fruit-img-box">
+  <img src="images/rocket.png">
 </div>
 </div>
 
