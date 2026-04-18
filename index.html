@@ -184,10 +184,67 @@ box-shadow: 0 0 12px white;
     padding: 10px;
   }
 }
+    .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.95);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 18px;
+  border-bottom: 1px solid #a855f7;
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.left-side h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #c084fc;
+}
+
+.menu-btn {
+  font-size: 24px;
+  cursor: pointer;
+  color: #c084fc;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: #c084fc;
+}
   </style>
 </head>
 
 <body>
+  <header class="navbar">
+
+<div class="left-side">
+<span class="menu-btn">☰</span>
+<h2>Immortal Blox</h2>
+</div>
+
+<div class="nav-links">
+<a href="#">Calculator</a>
+<a href="#">Value Changes</a>
+</div>
+
+</header>
 
 <div class="hero">
   <h1>Immortal Blox Values</h1>
