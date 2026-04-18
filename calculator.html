@@ -5,82 +5,256 @@
 <title>Calculator</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+margin:0;
+padding:0;
+background:#0f172a;
+font-family:'Orbitron',sans-serif;
+color:white;
+}
+
+h1{
+text-align:center;
+margin-top:40px;
+color:#c084fc;
+}
+
+.calc-card{
+max-width:900px;
+margin:40px auto;
+padding:30px;
+border-radius:18px;
+background:linear-gradient(145deg,#1e1b4b,#0f172a);
+border:2px solid #a855f7;
+box-shadow:0 0 15px #a855f7;
+transition:0.4s;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.side h2{
+text-align:center;
+color:#c084fc;
+}
+
+select{
+width:100%;
+padding:12px;
+margin:8px 0;
+background:#111827;
+color:white;
+border:1px solid #a855f7;
+border-radius:10px;
+}
+
+button{
+display:block;
+margin:25px auto;
+padding:12px 28px;
+background:#a855f7;
+border:none;
+border-radius:10px;
+color:white;
+font-weight:700;
+cursor:pointer;
+}
+
+button:hover{
+background:#9333ea;
+}
+
+#result{
+text-align:center;
+font-size:24px;
+margin-top:20px;
+}
+
+#diff{
+text-align:center;
+margin-top:10px;
+font-size:18px;
+color:#ddd;
+}
+
+.win{
+border-color:#22c55e;
+box-shadow:0 0 18px #22c55e;
+background:linear-gradient(145deg,#052e16,#0f172a);
+}
+
+.loss{
+border-color:#ef4444;
+box-shadow:0 0 18px #ef4444;
+background:linear-gradient(145deg,#450a0a,#0f172a);
+}
+
+.smallloss{
+border-color:orange;
+box-shadow:0 0 18px orange;
+background:linear-gradient(145deg,#451a03,#0f172a);
+}
+
+.fair{
+border-color:white;
+box-shadow:0 0 18px white;
+background:linear-gradient(145deg,#1f2937,#0f172a);
+}
+
+@media(max-width:700px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+
+</style>
 </head>
 
 <body>
 
-<header class="navbar">
-  <h2>Immortal Blox</h2>
+<h1>Trade Calculator</h1>
 
-  <div class="nav-links">
-    <a href="index.html">Fruit Values</a>
-    <a href="calculator.html">Calculator</a>
-    <a href="changes.html">Value Changes</a>
-  </div>
-</header>
+<div class="calc-card" id="card">
 
-<h1 style="text-align:center; margin-top:40px;">Trade Calculator</h1>
+<div class="grid">
 
-<div class="container">
+<div class="side">
+<h2>Your Side</h2>
 
-<div class="fruit mythical">
-<h3>Your Fruit</h3>
-<select id="yourFruit">
-<option>Dragon</option>
-<option>Kitsune</option>
-<option>Dough</option>
-<option>Buddha</option>
+<select class="your">
+<option value="0">Empty</option>
+<option value="24000000">Dragon</option>
+<option value="3000000">Kitsune</option>
+<option value="175000">Dough</option>
+<option value="75000">Buddha</option>
 </select>
-</div>
 
-<div class="fruit legendary">
-<h3>Their Fruit</h3>
-<select id="theirFruit">
-<option>Dragon</option>
-<option>Kitsune</option>
-<option>Dough</option>
-<option>Buddha</option>
+<select class="your">
+<option value="0">Empty</option>
+<option value="24000000">Dragon</option>
+<option value="3000000">Kitsune</option>
+<option value="175000">Dough</option>
+<option value="75000">Buddha</option>
 </select>
-</div>
+
+<select class="your">
+<option value="0">Empty</option>
+<option value="24000000">Dragon</option>
+<option value="3000000">Kitsune</option>
+<option value="175000">Dough</option>
+<option value="75000">Buddha</option>
+</select>
+
+<select class="your">
+<option value="0">Empty</option>
+<option value="24000000">Dragon</option>
+<option value="3000000">Kitsune</option>
+<option value="175000">Dough</option>
+<option value="75000">Buddha</option>
+</select>
 
 </div>
 
-<div style="text-align:center; margin-top:20px;">
+<div class="side">
+<h2>Their Side</h2>
+
+<select class="their">
+<option value="0">Empty</option>
+<option value="24000000">Dragon</option>
+<option value="3000000">Kitsune</option>
+<option value="175000">Dough</option>
+<option value="75000">Buddha</option>
+</select>
+
+<select class="their">
+<option value="0">Empty</option>
+<option value="24000000">Dragon</option>
+<option value="3000000">Kitsune</option>
+<option value="175000">Dough</option>
+<option value="75000">Buddha</option>
+</select>
+
+<select class="their">
+<option value="0">Empty</option>
+<option value="24000000">Dragon</option>
+<option value="3000000">Kitsune</option>
+<option value="175000">Dough</option>
+<option value="75000">Buddha</option>
+</select>
+
+<select class="their">
+<option value="0">Empty</option>
+<option value="24000000">Dragon</option>
+<option value="3000000">Kitsune</option>
+<option value="175000">Dough</option>
+<option value="75000">Buddha</option>
+</select>
+
+</div>
+
+</div>
+
 <button onclick="checkTrade()">Check Trade</button>
-</div>
 
-<h2 id="result" style="text-align:center;"></h2>
+<div id="result"></div>
+<div id="diff"></div>
+
+</div>
 
 <script>
+
 function checkTrade(){
 
-let values = {
-Dragon: 24000000,
-Kitsune: 3000000,
-Dough: 175000,
-Buddha: 75000
-};
+let yourTotal=0;
+let theirTotal=0;
 
-let your = document.getElementById("yourFruit").value;
-let their = document.getElementById("theirFruit").value;
+document.querySelectorAll(".your").forEach(x=>{
+yourTotal += Number(x.value);
+});
 
-let diff = values[their] - values[your];
+document.querySelectorAll(".their").forEach(x=>{
+theirTotal += Number(x.value);
+});
+
+let diff = theirTotal - yourTotal;
+
+let card = document.getElementById("card");
+card.className="calc-card";
 
 if(diff > 0){
-document.getElementById("result").innerHTML =
-"🟩 W Trade (+" + diff + ")";
+card.classList.add("win");
+document.getElementById("result").innerHTML="🟩 W Trade";
 }
-else if(diff < 0){
-document.getElementById("result").innerHTML =
-"🟥 L Trade (" + diff + ")";
+else if(diff == 0){
+card.classList.add("fair");
+document.getElementById("result").innerHTML="⚪ Fair Trade";
 }
 else{
-document.getElementById("result").innerHTML =
-"⚪ Fair Trade";
+
+let lossPercent = Math.abs(diff)/yourTotal;
+
+if(lossPercent <= 0.10){
+card.classList.add("smallloss");
+document.getElementById("result").innerHTML="🟧 Small L";
+}
+else{
+card.classList.add("loss");
+document.getElementById("result").innerHTML="🟥 L Trade";
 }
 
 }
+
+document.getElementById("diff").innerHTML=
+"Value Difference: "+diff.toLocaleString();
+
+}
+
 </script>
 
 </body>
