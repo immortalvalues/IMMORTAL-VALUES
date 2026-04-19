@@ -261,6 +261,15 @@ box-shadow:0 0 10px #a855f7;
 .right-side {
   width: 90px;
 }
+    .jump-buttons button{
+font-size:11px;
+padding:7px 10px;
+}
+
+.jump-buttons{
+gap:6px;
+padding:8px;
+}
     @media (max-width: 700px) {
 
 .center-links {
@@ -326,13 +335,13 @@ border-radius: 20px;
 }
     .jump-buttons{
 display:flex;
-flex-wrap:nowrap;
+flex-wrap:wrap;
 justify-content:center;
 align-items:center;
-gap:10px;
+gap:8px;
 padding:8px 10px 18px;
-overflow-x:auto;
-white-space:nowrap;
+max-width:1000px;
+margin:0 auto;
 }
 
 .jump-buttons button{
