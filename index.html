@@ -55,21 +55,26 @@
 }
 
 .buttons button {
-  background: #a855f7;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
+background: #a855f7;
+border: none;
+padding: 18px 38px;
+margin: 10px;
+border-radius: 16px;
+color: white;
+cursor: pointer;
+font-weight: 700;
+font-size: 22px;
+letter-spacing: 1px;
+transition: 0.3s;
+font-family:'Orbitron',sans-serif;
 }
 
 .buttons button:hover {
-  background: #9333ea;
+background: #9333ea;
+transform: scale(1.06);
+box-shadow: 0 0 15px #a855f7;
 }
-
+    
 .buttons .outline {
   background: transparent;
   border: 1px solid #a855f7;
@@ -345,9 +350,10 @@ border-radius: 20px;
   <span>REAL MILLION VALUE LIST</span>
 </p>
 
-  <div class="buttons">
-  <button onclick="scrollToSection('fruits')">FRUITS</button>
-  <button class="outline" onclick="scrollToSection('limited')">LIMITED / SPECIAL</button>
+ <div class="buttons">
+<button onclick="window.location.href='calculator.html'">CALCULATOR</button>
+
+<button class="outline" onclick="window.location.href='changes.html'">VALUE CHANGES</button>
 </div>
 
   <h2 class="main-category">FRUITS</h2>
