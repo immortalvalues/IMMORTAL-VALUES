@@ -229,6 +229,21 @@ padding: 8px 14px;
   border-radius: 8px;
   transition: 0.3s;
 }
+    #searchInput{
+width:260px;
+padding:10px 14px;
+border-radius:12px;
+border:1px solid #a855f7;
+background:#111827;
+color:white;
+font-family:'Orbitron',sans-serif;
+font-size:14px;
+outline:none;
+}
+
+#searchInput:focus{
+box-shadow:0 0 10px #a855f7;
+}
 
 .center-links a:hover {
   color: #c084fc;
@@ -303,8 +318,7 @@ border-radius: 20px;
 </div>
 
 <div class="center-links">
-<a href="calculator.html">Calculator</a>
-<a href="#">Value Changes</a>
+<input type="text" id="searchInput" placeholder="Search fruits..." onkeyup="searchFruits()">
 </div>
 
 <div class="right-side"></div>
@@ -1317,6 +1331,20 @@ function scrollToSection(id) {
   document.getElementById(id).scrollIntoView({
     behavior: "smooth"
   });
+}
+     function searchFruits() {
+let input = document.getElementById("searchInput").value.toLowerCase();
+let cards = document.querySelectorAll(".fruit");
+
+cards.forEach(card => {
+let name = card.querySelector("h3").innerText.toLowerCase();
+
+if(name.includes(input)){
+card.style.display = "flex";
+} else {
+card.style.display = "none";
+}
+});
 }
 </script>
   
