@@ -259,15 +259,21 @@ box-shadow:0 0 10px #a855f7;
     @media (max-width: 700px) {
 
 .center-links {
-  display: none;
+display: flex;
+position: static;
+transform: none;
+margin-left: auto;
 }
-
+      
 .left-side h2 {
-  font-size: 16px;
+font-size: 14px;
 }
-
+      
 .navbar {
-padding: 12px 22px;
+padding: 10px 12px;
+display: flex;
+flex-direction: row;
+align-items: center;
 }
 
 .menu-btn {
@@ -280,6 +286,11 @@ padding: 12px 22px;
 
 .hero h1 {
   font-size: 58px;
+}
+      #searchInput{
+width: 130px;
+padding: 8px 10px;
+font-size: 12px;
 }
 
 }
