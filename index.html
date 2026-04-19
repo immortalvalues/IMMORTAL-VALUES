@@ -190,7 +190,7 @@ box-shadow: 0 0 12px white;
   z-index: 1000;
   background: rgba(15, 23, 42, 0.95);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 18px 34px;
   border-bottom: 1px solid #a855f7;
@@ -215,9 +215,10 @@ font-size: 30px;
 }
 
 .center-links {
-  display: flex;
-  gap: 14px;
-  align-items: center;
+display: flex;
+gap: 14px;
+align-items: center;
+margin: 0 auto;
 }
 
 .center-links a {
@@ -1332,19 +1333,39 @@ function scrollToSection(id) {
     behavior: "smooth"
   });
 }
-     function searchFruits() {
+    function searchFruits() {
 let input = document.getElementById("searchInput").value.toLowerCase();
 let cards = document.querySelectorAll(".fruit");
+let firstMatch = null;
 
 cards.forEach(card => {
 let name = card.querySelector("h3").innerText.toLowerCase();
 
 if(name.includes(input)){
 card.style.display = "flex";
+
+if(!firstMatch){
+firstMatch = card;
+}
+
 } else {
 card.style.display = "none";
 }
 });
+
+if(firstMatch && input !== ""){
+firstMatch.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+}
+
+if(input === ""){
+cards.forEach(card=>{
+card.style.display="flex";
+});
+}
+}
 }
 </script>
   
