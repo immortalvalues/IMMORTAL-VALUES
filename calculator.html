@@ -198,6 +198,45 @@ color: #c084fc;
 .right-side {
 width: 90px;
 }
+  .picker-popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.75);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:3000;
+}
+
+.picker-box{
+width:90%;
+max-width:700px;
+background:#111827;
+padding:25px;
+border-radius:18px;
+border:2px solid #a855f7;
+}
+
+.picker-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+margin-top:18px;
+}
+
+.pick-card{
+padding:18px;
+background:#1e1b4b;
+border:1px solid #a855f7;
+border-radius:14px;
+cursor:pointer;
+text-align:center;
+font-weight:700;
+}
+
+.pick-card:hover{
+background:#9333ea;
+}
   
 </style>
 </head>
@@ -229,10 +268,10 @@ width: 90px;
 <h2>Your Side</h2>
 
 <div class="slot-grid">
-<div class="slot">+</div>
-<div class="slot">+</div>
-<div class="slot">+</div>
-<div class="slot">+</div>
+<div class="slot" onclick="openPicker(this)">+</div>
+<div class="slot" onclick="openPicker(this)">+</div>
+<div class="slot" onclick="openPicker(this)">+</div>
+<div class="slot" onclick="openPicker(this)">+</div>
 </div>
 
 </div>
@@ -241,10 +280,10 @@ width: 90px;
 <h2>Their Side</h2>
 
 <div class="slot-grid">
-<div class="slot">+</div>
-<div class="slot">+</div>
-<div class="slot">+</div>
-<div class="slot">+</div>
+<div class="slot" onclick="openPicker(this)">+</div>
+<div class="slot" onclick="openPicker(this)">+</div>
+<div class="slot" onclick="openPicker(this)">+</div>
+<div class="slot" onclick="openPicker(this)">+</div>
 </div>
 
 </div>
@@ -256,7 +295,44 @@ width: 90px;
 
 </div>
 
+   <div id="picker" class="picker-popup">
+
+<div class="picker-box">
+
+<h2>Select Fruit</h2>
+
+<div class="picker-grid">
+
+<div class="pick-card" onclick="chooseFruit('Dragon','24m')">Dragon</div>
+<div class="pick-card" onclick="chooseFruit('Kitsune','3m')">Kitsune</div>
+<div class="pick-card" onclick="chooseFruit('Dough','175k')">Dough</div>
+<div class="pick-card" onclick="chooseFruit('Buddha','75k')">Buddha</div>
+
+</div>
+
+<button onclick="closePicker()">Close</button>
+
+</div>
+</div>
+
 <script>
+ 
+  let activeSlot = null;
+
+function openPicker(slot){
+activeSlot = slot;
+document.getElementById("picker").style.display="flex";
+}
+
+function closePicker(){
+document.getElementById("picker").style.display="none";
+}
+
+function chooseFruit(name,val){
+activeSlot.innerHTML = name;
+activeSlot.setAttribute("data-value",val);
+closePicker();
+}
 
 function checkTrade(){
 
@@ -303,7 +379,7 @@ document.getElementById("diff").innerHTML=
 "Value Difference: "+diff.toLocaleString();
 
 }
-
+  
 </script>
 
 </body>
