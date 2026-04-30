@@ -258,6 +258,13 @@ color:#cbd5e1;
 .pick-card:hover{
 background:#9333ea;
 }
+
+  .slot-img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:18px;
+}
   
 </style>
 </head>
@@ -294,6 +301,10 @@ background:#9333ea;
 <div class="slot" onclick="openPicker(this)">+</div>
 <div class="slot" onclick="openPicker(this)">+</div>
 </div>
+  <div id="yourTotals">
+Total Value: 0<br>
+Total Demand: 0
+</div>
 
 </div>
 
@@ -305,6 +316,10 @@ background:#9333ea;
 <div class="slot" onclick="openPicker(this)">+</div>
 <div class="slot" onclick="openPicker(this)">+</div>
 <div class="slot" onclick="openPicker(this)">+</div>
+</div>
+  <div id="theirTotals">
+Total Value: 0<br>
+Total Demand: 0
 </div>
 
 </div>
@@ -324,33 +339,28 @@ background:#9333ea;
 
 <div class="picker-grid">
 
-<div class="pick-card" onclick="chooseFruit('Dragon',24000000)">
+<div class="pick-card" onclick="chooseFruit('Dragon',24000000,'images/dragon(Western).png',10)">
 <img src="images/dragon.png">
-<h3>Dragon</h3>
-<p>24M • Demand 10</p>
+<h3>Dragon(Western)</h3>
 </div>
 
-<div class="pick-card" onclick="chooseFruit('Kitsune',3000000)">
+<div class="pick-card" onclick="chooseFruit('Kitsune',3000000,'images/kitsune.png',9)">
 <img src="images/kitsune.png">
 <h3>Kitsune</h3>
-<p>3M • Demand 9</p>
 </div>
 
-<div class="pick-card" onclick="chooseFruit('Dough',175000)">
+<div class="pick-card" onclick="chooseFruit('Dough',175000,'images/dough.png',8)">
 <img src="images/dough.png">
 <h3>Dough</h3>
-<p>175K • Demand 8</p>
 </div>
 
-<div class="pick-card" onclick="chooseFruit('Buddha',75000)">
+<div class="pick-card" onclick="chooseFruit('Buddha',75000,'images/buddha.png',7)">
 <img src="images/buddha.png">
 <h3>Buddha</h3>
-<p>75K • Demand 7</p>
 </div>
 
-<button onclick="closePicker()">Close</button>
-
 </div>
+  <button onclick="closePicker()">Close</button>
 </div>
 
 <script>
@@ -366,23 +376,54 @@ function closePicker(){
 document.getElementById("picker").style.display="none";
 }
 
-function chooseFruit(name,val){
-activeSlot.innerHTML = name;
+function chooseFruit(name,val,img,demand){
+
+activeSlot.innerHTML =
+'<img src="'+img+'" class="slot-img">';
+
 activeSlot.setAttribute("data-value",val);
+activeSlot.setAttribute("data-demand",demand);
+
 closePicker();
+updateTotals();
 }
 
+  function updateTotals(){
+
+let yourValue=0;
+let yourDemand=0;
+let theirValue=0;
+let theirDemand=0;
+
+document.querySelectorAll(".side:first-child .slot").forEach(slot=>{
+yourValue += Number(slot.dataset.value || 0);
+yourDemand += Number(slot.dataset.demand || 0);
+});
+
+document.querySelectorAll(".side:last-child .slot").forEach(slot=>{
+theirValue += Number(slot.dataset.value || 0);
+theirDemand += Number(slot.dataset.demand || 0);
+});
+
+document.getElementById("yourTotals").innerHTML =
+"Total Value: "+yourValue.toLocaleString()+"<br>Total Demand: "+yourDemand;
+
+document.getElementById("theirTotals").innerHTML =
+"Total Value: "+theirValue.toLocaleString()+"<br>Total Demand: "+theirDemand;
+
+}
+  
 function checkTrade(){
 
 let yourTotal=0;
 let theirTotal=0;
 
-document.querySelectorAll(".your").forEach(x=>{
-yourTotal += Number(x.value);
+document.querySelectorAll(".side:first-child .slot").forEach(slot=>{
+yourTotal += Number(slot.dataset.value || 0);
 });
 
-document.querySelectorAll(".their").forEach(x=>{
-theirTotal += Number(x.value);
+document.querySelectorAll(".side:last-child .slot").forEach(slot=>{
+theirTotal += Number(slot.dataset.value || 0);
 });
 
 let diff = theirTotal - yourTotal;
@@ -392,7 +433,7 @@ card.className="calc-card";
 
 if(diff > 0){
 card.classList.add("win");
-document.getElementById("result").innerHTML=" W Trade";
+document.getElementById("result").innerHTML="🟢 W Trade";
 }
 else if(diff == 0){
 card.classList.add("fair");
@@ -400,21 +441,19 @@ document.getElementById("result").innerHTML="⚪ Fair Trade";
 }
 else{
 
-let lossPercent = Math.abs(diff)/yourTotal;
-
-if(lossPercent <= 0.10){
+if(yourTotal > 0 && Math.abs(diff)/yourTotal <= 0.10){
 card.classList.add("smallloss");
-document.getElementById("result").innerHTML=" Small L";
+document.getElementById("result").innerHTML="🟠 Small L";
 }
 else{
 card.classList.add("loss");
-document.getElementById("result").innerHTML=" 🔴 L Trade";
+document.getElementById("result").innerHTML="🔴 L Trade";
 }
 
 }
 
-document.getElementById("diff").innerHTML=
-"Value Difference: "+diff.toLocaleString();
+document.getElementById("diff").innerHTML =
+"Value Difference: "+Math.abs(diff).toLocaleString();
 
 }
   
